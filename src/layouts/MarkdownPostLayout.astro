@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Tags from "../components/Tags.astro";
+import Tag from "../pages/tags/[tag].astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -11,36 +11,7 @@ const { frontmatter } = Astro.props;
   <p><em>{frontmatter.description}</em></p>
   <p>Written by: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-  <div class="tags">
-    {
-      frontmatter.tags.map((tag) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
-  </div>
-  <slot />
+  <Tags tags={frontmatter.tags}>
+    <slot />
+  </Tags>
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539f;
-    text-decoration: none;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>
