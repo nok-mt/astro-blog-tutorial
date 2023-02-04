@@ -1,7 +1,7 @@
 ---
+import "../styles/markdown.min.css";
 import BaseLayout from "./BaseLayout.astro";
 import Tags from "../components/Tags.astro";
-import Tag from "../pages/tags/[tag].astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -11,7 +11,6 @@ const { frontmatter } = Astro.props;
   <p><em>{frontmatter.description}</em></p>
   <p>Written by: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-  <Tags tags={frontmatter.tags}>
-    <slot />
-  </Tags>
+  <Tags tags={frontmatter.tags} />
+  <slot />
 </BaseLayout>
