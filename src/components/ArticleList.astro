@@ -1,0 +1,24 @@
+---
+import BlogPost from "./BlogPost.astro";
+const { articleArray } = Astro.props;
+---
+
+<ul>
+  {
+    articleArray.map((post) => (
+      <BlogPost
+        url={`/posts/${post.slug}`}
+        title={post.data.title}
+        image={post.data.image}
+      />
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+</style>

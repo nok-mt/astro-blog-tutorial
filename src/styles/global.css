@@ -16,6 +16,10 @@ body {
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+}
+
 main {
   flex: 1;
   width: 100%;
