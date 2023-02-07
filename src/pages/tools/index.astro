@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Tags from "../../components/Tags.astro";
+
+const pageTitle = "Tools Index";
+
+//microCMS呼び出し
+import { getBlogs } from "../../library/microcms";
+
+const allPosts = await getBlogs();
+const tools = [...new Set(allPosts.contents.map((post) => post.tools).flat())];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Tags tools={tools} />
+</BaseLayout>

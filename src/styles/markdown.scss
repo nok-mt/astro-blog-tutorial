@@ -23,10 +23,18 @@ pre {
   padding: 1em;
   border-radius: 8px;
   font-size: 1rem;
+  background-color: #333333;
+  color: #ffffff;
 }
 
 blockquote {
   margin-left: 0;
   padding-left: 1rem;
   border-left: 2px solid #555555;
+}
+
+img:not(.mainImage) {
+  width: 400px;
+  display: block;
+  margin: 0 auto;
 }

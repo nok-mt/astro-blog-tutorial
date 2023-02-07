@@ -7,9 +7,9 @@ const { articleArray } = Astro.props;
   {
     articleArray.map((post) => (
       <BlogPost
-        url={`/posts/${post.slug}`}
-        title={post.data.title}
-        image={post.data.image}
+        url={`/${post.id}`}
+        title={post.title}
+        image={post.mainImage.url}
       />
     ))
   }

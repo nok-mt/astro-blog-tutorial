@@ -1,12 +1,12 @@
 ---
-const { tags } = Astro.props;
+const { tools } = Astro.props;
 ---
 
-<div class="tags">
+<div class="tools">
   {
-    tags.map((tag) => (
-      <p class="tag">
-        <a href={`/tags/${tag}`}>{tag}</a>
+    tools.map((tool) => (
+      <p class="tool">
+        <a href={`/tools/${tool}`}>{tool}</a>
       </p>
     ))
   }
@@ -18,13 +18,13 @@ const { tags } = Astro.props;
     text-decoration: none;
   }
 
-  .tags {
+  .tools {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
   }
 
-  .tag {
+  .tool {
     margin: 0.25em;
     border: dotted 1px #a1a1a1;
     border-radius: 0.5em;

@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleList from "../../components/ArticleList.astro";
+
+//microCMS呼び出し
+import { getBlogs } from "../../library/microcms";
+
+// 詳細記事ページの全パスを取得
+export async function getStaticPaths() {
+  const response = await getBlogs();
+
+  const uniqueTags = [
+    ...new Set(response.contents.map((post) => post.tools).flat()),
+  ];
+
+  return uniqueTags.map((tool) => {
+    const filteredPosts = response.contents.filter((post) =>
+      post.tools.includes(tool)
+    );
+    return {
+      params: { tool },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tool } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout pageTitle={`#${tool}`}>
+  <p>Posts tagged with {tool}</p>
+  <ArticleList articleArray={posts} />
+</BaseLayout>

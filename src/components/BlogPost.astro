@@ -1,11 +1,8 @@
 ---
 interface Props {
-  url: string | undefined;
+  url: string;
   title: string;
-  image: {
-    url: string;
-    alt: string;
-  };
+  image: string;
 }
 
 const { url, title, image } = Astro.props;
@@ -13,7 +10,7 @@ const { url, title, image } = Astro.props;
 
 <li>
   <a href={url}>
-    <div class="image"><img src={image.url} alt={image.alt} /></div>
+    <div class="image"><img src={image} alt="" /></div>
     <p class="title">{title}</p>
   </a>
 </li>
